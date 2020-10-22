@@ -1,0 +1,29 @@
+1) Creating a IAM with administration access of all elasticservices.
+2) Open ECS and create a cluster with EC2 inux + Networking
+	next step: Cluster Name* <some name>
+	click on CREATE
+
+It will create a EC2
+
+once cluster is created open the cluster and click on ECS Instances (option) to view EC2
+
+
+3) Open ECR and create a Repositorieswith you custom define name.
+Once you created the Repositorie you you can see URi for that Repositorie now we need to push our docker image to the created Repositorie.
+
+4 commands to push the image to ECR.(Windows)
+ ...> aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin  505398100475.dkr.ecr.ap-south-1.amazonaws.com
+ ...> docker build -t kirandockerregister .
+ ...> docker tag kirandockerregister:latest 505398100475.dkr.ecr.ap-south-1.amazonaws.com/kirandockerregister:latest
+ ...> docker push 505398100475.dkr.ecr.ap-south-1.amazonaws.com/kirandockerregister:latest
+
+Once we completed pushing the image we can see out image and imageURl and then we need to create Task definitions
+
+..> custom task name
+..> select EC2
+..> provide memory and CPU 
+..> Adding Container
+---> provide container name and copy paste the image url which we will get from ECR (created repo).
+Once we created we need to create a service for the task 
+
+Actions --> we can find create service.
