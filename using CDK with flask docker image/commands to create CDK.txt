@@ -1,0 +1,4 @@
+aws cloudformation create-stack --stack-name kiran-example-deployment --template-body file://docker_ecs.yaml --capabilities CAPABILITY_NAMED_IAM --parameters 'ParameterKey=SubnetID,ParameterValue=<subnet-ID>'
+
+
+aws cloudformation delete-stack --stack-name kiran-example-deployment
